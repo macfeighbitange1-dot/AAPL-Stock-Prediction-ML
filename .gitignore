@@ -1,0 +1,13 @@
+# Environments
+venv/
+.env
+__pycache__/
+*.pyc
+
+# ML Models & Data
+*.whl
+*.dll
+*.exe
+*.bin
+*.h5
+*.pkl
