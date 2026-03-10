@@ -1,7 +1,6 @@
-echo pandas==2.2.3 > requirements.txt
-echo numpy==2.1.1 >> requirements.txt
-echo matplotlib==3.9.2 >> requirements.txt
-echo yfinance==0.2.44 >> requirements.txt
-echo statsmodels==0.14.4 >> requirements.txt
-echo xgboost==2.1.1 >> requirements.txt
-echo flask==3.0.3 >> requirements.txt   # if you added app.py for web
+pandas==2.2.3
+numpy==2.1.1
+matplotlib==3.9.2
+yfinance==0.2.44
+statsmodels==0.14.4
+xgboost==2.1.1
