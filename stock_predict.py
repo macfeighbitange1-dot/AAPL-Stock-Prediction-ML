@@ -159,8 +159,12 @@ print(f"XGBoost MAE: {mae_gb:,.2f} | RMSE: {rmse_gb:,.2f}")
 print("\n=== Future Prediction - Next 30 Days ===")
 future_days = 30
 
-# Ensure pandas is available
-future_dates = pd.date_range(start=test_close.index[-1] + timedelta(days=1), periods=future_days, freq='B')
+# Safety check for pandas
+try:
+    future_dates = pd.date_range(start=test_close.index[-1] + timedelta(days=1), periods=future_days, freq='B')
+except NameError as e:
+    print("Error: pandas not available. Make sure 'import pandas as pd' is at the top.")
+    exit(1)
 
 # ARIMA future (rolling from recent history)
 arima_future = []
@@ -204,7 +208,7 @@ for _ in range(future_days):
     if current_features[0, 1] != 0:
         current_features[0, 10] = np.log(pred / current_features[0, 1])
     else:
-        current_features[0, 10] = 0
+        current_features[0, 10] = 0  # avoid div by zero
 
 gb_future_series = pd.Series(gb_future, index=future_dates)
 
